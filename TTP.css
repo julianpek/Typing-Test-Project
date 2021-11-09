@@ -1,0 +1,19 @@
+.styling {
+    background-color: #003399;
+    color: #CCFFCC;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.text-box {
+    height: 100px;
+    width: 300px;
+    padding: 10px;
+    position: relative;
+    text-align:center;
+}
