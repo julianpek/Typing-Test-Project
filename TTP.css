@@ -15,5 +15,11 @@
     width: 300px;
     padding: 10px;
     position: relative;
+    display:flex;
     text-align:center;
+    background-color: blue;
+}
+
+.word {
+    padding: 3px; 
 }
