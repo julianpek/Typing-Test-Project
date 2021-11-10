@@ -1,6 +1,6 @@
 .styling {
-    background-color: #003399;
-    color: #CCFFCC;
+    background-color: #F79489;
+    color: #B95C50;
 }
 
 .container {
@@ -10,16 +10,40 @@
     min-height: 100vh;
 }
 
-.text-box {
-    height: 100px;
-    width: 300px;
+.text-container {
+    height: 400px;
+    width: 600px;
     padding: 10px;
     position: relative;
     display:flex;
-    text-align:center;
-    background-color: blue;
+    justify-content: space-around;
+    background-color: transparent;
+    font-family: 'Source Code Pro', monospace;
+    font-size: large;
+    flex-wrap: wrap;
+    letter-spacing: -4px;
+    border-radius: 15px;
 }
 
 .word {
-    padding: 3px; 
+    margin: 11px; 
+}
+
+.btn-container { 
+    margin: 20px;
+    position: absolute;
+    bottom: 15%;
+}
+
+.btn {
+    left: 50%;
+    background: none;
+    border: 0;
+    color:#B95C50;
+
+}
+
+.btn :hover {
+    color: #3B0404;
+    transition: .3s;
 }
