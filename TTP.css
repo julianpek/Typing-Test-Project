@@ -10,7 +10,7 @@
     min-height: 100vh;
 }
 
-.text-container {
+.words-container {
     height: 400px;
     width: 600px;
     padding: 10px;
@@ -21,7 +21,6 @@
     font-family: 'Source Code Pro', monospace;
     font-size: large;
     flex-wrap: wrap;
-    letter-spacing: -4px;
     border-radius: 15px;
 }
 
@@ -35,7 +34,7 @@
     bottom: 15%;
 }
 
-.btn {
+.refresh-btn {
     left: 50%;
     background: none;
     border: 0;
@@ -43,7 +42,7 @@
 
 }
 
-.btn :hover {
+.refresh-btn :hover {
     color: #3B0404;
     transition: .3s;
 }
