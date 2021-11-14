@@ -1,4 +1,4 @@
-.styling {
+#styling {
     background-color: #F79489;
     color: #B95C50;
 }
@@ -10,7 +10,7 @@
     min-height: 100vh;
 }
 
-.words-container {
+#words-container {
     height: 400px;
     width: 600px;
     padding: 10px;
@@ -24,17 +24,13 @@
     border-radius: 15px;
 }
 
-.word {
-    margin: 11px; 
-}
-
-.btn-container { 
+#btn-container { 
     margin: 20px;
     position: absolute;
     bottom: 15%;
 }
 
-.refresh-btn {
+#refresh-btn {
     left: 50%;
     background: none;
     border: 0;
@@ -42,7 +38,7 @@
 
 }
 
-.refresh-btn :hover {
+#refresh-btn :hover {
     color: #3B0404;
     transition: .3s;
 }
