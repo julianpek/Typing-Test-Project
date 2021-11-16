@@ -21,6 +21,4 @@ setInterval(function() {
         id = document.getElementById("countdown");
         id.innerHTML = `${seconds}`;
     }
-}, 1000);
-
- 
+}, 1000); 
