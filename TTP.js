@@ -14,11 +14,18 @@ function refresh() {
     window.location.reload();
 }
 // timer
-setInterval(function() {
-    seconds--;
+function startCountdown() {
+        setInterval(function() {
+        seconds--;
 
-    if(seconds >= 0) {
-        id = document.getElementById("countdown");
-        id.innerHTML = `${seconds}`;
-    }
-}, 1000); 
+        if(seconds >= 0) {
+            id = document.getElementById("countdown");
+            id.innerHTML = `${seconds}`;
+//      } else { 
+//          add code to display typing stats here
+        }
+    }, 1000);
+}
+
+// event listener
+document.onkeydown = startCountdown;
