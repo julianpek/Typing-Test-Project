@@ -14,8 +14,8 @@ function shuffledWords() {
 function refresh() {
     window.location.reload();
 }
-// timer
-function timer() {
+// timer for type test
+function testTimer() {
     setInterval(function() {
         seconds--;
 
@@ -30,8 +30,9 @@ function timer() {
 }    
 
 function startCountdown() {
-    if (!countdown) timer();
+    if (!countdown) testTimer();
 }
 
 // event listener
 document.onkeydown = startCountdown;
+
