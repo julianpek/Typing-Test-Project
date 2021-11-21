@@ -3,19 +3,28 @@ const TEST_WORDS = ["apples", "the", "or", "welcome", "Canada", "zebra", "wave",
 const TEST_WORDS_SHUFFLED = TEST_WORDS.sort((a, b) => 0.5 - Math.random());
 const TIMER_EL = document.getElementById("countdown");
 let seconds = 60;
+let countdown = false;
 
-// displays shuffled words dynamically
-function shuffledWords() {
-    let prg = document.getElementById("shuff-words");
-    prg.innerHTML = TEST_WORDS_SHUFFLED.join(" ");
+// populates words and places each individual character into a span
+function words() {
+    let span = document.createElement("span"),
+        div = document.getElementById("words-div"),
+        letters = TEST_WORDS_SHUFFLED.join(" "),
+        split = letters.split("");
+
+    for(let i = 0; i < split.length; i++) {
+        div.innerHTML += "<span>" + split[i] + "</span>";
+    }
+    div.appendChild(span);
 }
+
 // refreshes page
 function refresh() {
     window.location.reload();
 }
 // timer
-function startCountdown() {
-        setInterval(function() {
+function testTimer() {
+    setInterval(function() {
         seconds--;
 
         if(seconds >= 0) {
@@ -25,6 +34,11 @@ function startCountdown() {
 //          add code to display typing stats here
         }
     }, 1000);
+    countdown = true;
+}
+
+function startCountdown() { 
+    if (!countdown) testTimer();
 }
 
 // event listener

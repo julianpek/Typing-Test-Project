@@ -27,16 +27,13 @@
     color: #AA1945;
 }
 
-#words-container {
+#words-div {
     position: relative;
     height: 300px;
     width: 700px;
     padding: 10px;
-    display:flex;
-    justify-content: space-evenly;
     font-family: 'Source Code Pro', monospace;
     font-size: large;
-    flex-wrap: wrap;
     border-radius: 15px;
     grid-row: 2;
 }
