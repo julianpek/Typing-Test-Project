@@ -6,11 +6,21 @@ let seconds = 60;
 let countdown = false; 
 
 // displays shuffled words dynamically
-function shuffledWords() {
-    let prg = document.getElementById("shuff-words");
-    prg.innerHTML = TEST_WORDS_SHUFFLED.join(" ");
+function words() {
+    let span = document.createElement("span"),
+        div = document.getElementById("words-div"),
+        letters = TEST_WORDS_SHUFFLED.join(" "),
+        split = letters.split("");
+
+    for(let i = 0; i < split.length; i++) {
+        div.innerHTML += "<span>" + split[i] + "</span>";
+    }
+    div.appendChild(span);
 }
-// refreshes page
+
+
+
+// refresh page
 function refresh() {
     window.location.reload();
 }
@@ -33,6 +43,6 @@ function startCountdown() {
     if (!countdown) testTimer();
 }
 
-// event listener
+// event
 document.onkeydown = startCountdown;
 
