@@ -18,11 +18,13 @@ function words() {
     div.appendChild(span);
 }
 
-// refreshes page
+
+
+// refresh page
 function refresh() {
     window.location.reload();
 }
-// timer
+// timer for type test
 function testTimer() {
     setInterval(function() {
         seconds--;
@@ -35,11 +37,12 @@ function testTimer() {
         }
     }, 1000);
     countdown = true;
-}
+}    
 
-function startCountdown() { 
+function startCountdown() {
     if (!countdown) testTimer();
 }
 
-// event listener
+// event
 document.onkeydown = startCountdown;
+
