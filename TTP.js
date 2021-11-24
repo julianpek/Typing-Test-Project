@@ -18,8 +18,6 @@ function words() {
     div.appendChild(span);
 }
 
-
-
 // refresh page
 function refresh() {
     window.location.reload();
@@ -43,6 +41,9 @@ function startCountdown() {
     if (!countdown) testTimer();
 }
 
-// event
+// event listneres
 document.onkeydown = startCountdown;
+
+document.addEventListener("keypress", ({ key }) => console.log(key));
+
 
