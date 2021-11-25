@@ -41,9 +41,21 @@ function startCountdown() {
     if (!countdown) testTimer();
 }
 
-// event listneres
+document.addEventListener("keypress", function() {
+    const WORDS_DIV = document.getElementById("words-div");
+    const CURSOR = WORDS_DIV.firstElementChild;
+    const key = {};
+
+    if (key === CURSOR) { 
+        CURSOR.classList.add("cursor");
+    }
+});
+
+// event
 document.onkeydown = startCountdown;
 
-document.addEventListener("keypress", ({ key }) => console.log(key));
+/*document.addEventListener("keypress", ({ key }) => 
+console.log(key);
+if (key === )
 
-
+);*/
