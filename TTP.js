@@ -2,8 +2,9 @@ const TEST_WORDS = ["apples", "the", "or", "welcome", "Canada", "zebra", "wave",
 // shuffles array of words
 const TEST_WORDS_SHUFFLED = TEST_WORDS.sort((a, b) => 0.5 - Math.random());
 const TIMER_EL = document.getElementById("countdown");
-let seconds = 60;
 let countdown = false;
+let current_position = 0;
+let seconds = 60;
 
 // populates words and places each individual character into a span
 function words() {
@@ -16,6 +17,7 @@ function words() {
         div.innerHTML += "<span>" + split[i] + "</span>";
     }
     div.appendChild(span);
+    div.firstElementChild.id = "cursor";
 }
 
 // refresh page
@@ -30,8 +32,6 @@ function testTimer() {
         if(seconds >= 0) {
             id = document.getElementById("countdown");
             id.innerHTML = `${seconds}`;
-//      } else { 
-//          add code to display typing stats here
         }
     }, 1000);
     countdown = true;
@@ -41,21 +41,25 @@ function startCountdown() {
     if (!countdown) testTimer();
 }
 
-document.addEventListener("keypress", function() {
-    const WORDS_DIV = document.getElementById("words-div");
-    const CURSOR = WORDS_DIV.firstElementChild;
-    const key = {};
+//event listeners
 
-    if (key === CURSOR) { 
-        CURSOR.classList.add("cursor");
+document.addEventListener("keypress", function(e) {
+    const WORDS_DIV = document.getElementById("words-div");
+    let WORDS_ARRAY = WORDS_DIV.children;
+
+    if(e.key === WORDS_ARRAY[current_position].innerHTML) {
+        WORDS_ARRAY[current_position].id = "correct";
+        current_position++;
+        WORDS_ARRAY[current_position].id = "cursor";
+    } else {
+        WORDS_ARRAY[current_position].id = "incorrect";
+        current_position++;
+        WORDS_ARRAY[current_position].id = "cursor";
     }
 });
 
-// event
+// document.addEvCanentListener(seconds = 0, function() { 
+//     let words ="";
+// }
+
 document.onkeydown = startCountdown;
-
-/*document.addEventListener("keypress", ({ key }) => 
-console.log(key);
-if (key === )
-
-);*/
