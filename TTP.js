@@ -24,7 +24,7 @@ function words() {
 function refresh() {
     window.location.reload();
 }
-// timer for type test
+// timer and stats for type test
 function testTimer() {
     setInterval(function() {
         seconds--;
@@ -32,6 +32,17 @@ function testTimer() {
         if(seconds >= 0) {
             id = document.getElementById("countdown");
             id.innerHTML = `${seconds}`;
+        } else { 
+            const WORDS_DIV = document.getElementById("words-div");
+            const WORDS_ARRAY = WORDS_DIV.children;
+            //need to figure out how to determine the amount of words 
+            const NUM_OF_WORDS = WORDS_ARRAY.split(" ").length;
+            // need to figure out how many words were correct
+            // need to figure out how many words were correct incomparison to incorrect for accuracy stat
+            const WPS = NUM_OF_WORDS / seconds;
+            const WPM = WPS * seconds;
+            document.getElementById("countdown").innerHTML = `WPM = ${WPM}`;
+            return;
         }
     }, 1000);
     countdown = true;
@@ -42,10 +53,9 @@ function startCountdown() {
 }
 
 //event listeners
-
 document.addEventListener("keypress", function(e) {
     const WORDS_DIV = document.getElementById("words-div");
-    let WORDS_ARRAY = WORDS_DIV.children;
+    const WORDS_ARRAY = WORDS_DIV.children;
 
     if(e.key === WORDS_ARRAY[current_position].innerHTML) {
         WORDS_ARRAY[current_position].id = "correct";
@@ -57,9 +67,5 @@ document.addEventListener("keypress", function(e) {
         WORDS_ARRAY[current_position].id = "cursor";
     }
 });
-
-// document.addEvCanentListener(seconds = 0, function() { 
-//     let words ="";
-// }
 
 document.onkeydown = startCountdown;
