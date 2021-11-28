@@ -58,18 +58,18 @@
     transition: .3s;
 }
 
-#cursor {
+.cursor {
     border-bottom: solid;
     animation: blink 1s;
     animation-iteration-count: infinite;
 }
 @keyframes blink { 50% { border-color:rgba(255, 255, 255, 0) ; }  }
 
-#correct {
+.correct {
     color:#f35240;
 }
 
-#incorrect {
+.incorrect {
     color: #900020;
     border-color: rgb(255, 255, 255);
     border

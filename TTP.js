@@ -16,6 +16,7 @@ function words() {
     for(let i = 0; i < split.length; i++) {
         div.innerHTML += "<span>" + split[i] + "</span>";
     }
+
     div.appendChild(span);
     div.firstElementChild.id = "cursor";
 }
@@ -33,16 +34,16 @@ function testTimer() {
             id = document.getElementById("countdown");
             id.innerHTML = `${seconds}`;
         } else { 
-            const WORDS_DIV = document.getElementById("words-div");
-            const WORDS_ARRAY = WORDS_DIV.children;
-            //need to figure out how to determine the amount of words 
-            const NUM_OF_WORDS = WORDS_ARRAY.split(" ").length;
-            // need to figure out how many words were correct
-            // need to figure out how many words were correct incomparison to incorrect for accuracy stat
-            const WPS = NUM_OF_WORDS / seconds;
-            const WPM = WPS * seconds;
-            document.getElementById("countdown").innerHTML = `WPM = ${WPM}`;
-            return;
+            let correct = document.querySelectorAll(".correct").length;
+            let incorrect = document.querySelectorAll(".incorrect").length; 
+            let total = correct + incorrect;
+            let results = correct / total * 100;
+            let accuracy = "Accuracy: " = results.toFixed() + "%";
+            let wpmresults = total / 5 - incorrect / seconds;
+            let wpm = "WPM: " + wpmresults;
+            
+
+            alert(accuracy + wpm);
         }
     }, 1000);
     countdown = true;
@@ -58,13 +59,13 @@ document.addEventListener("keypress", function(e) {
     const WORDS_ARRAY = WORDS_DIV.children;
 
     if(e.key === WORDS_ARRAY[current_position].innerHTML) {
-        WORDS_ARRAY[current_position].id = "correct";
+        WORDS_ARRAY[current_position].className = "correct";
         current_position++;
-        WORDS_ARRAY[current_position].id = "cursor";
+        WORDS_ARRAY[current_position].className = "cursor";
     } else {
-        WORDS_ARRAY[current_position].id = "incorrect";
+        WORDS_ARRAY[current_position].className = "incorrect";
         current_position++;
-        WORDS_ARRAY[current_position].id = "cursor";
+        WORDS_ARRAY[current_position].className = "cursor";
     }
 });
 
