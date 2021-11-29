@@ -38,24 +38,11 @@ function testTimer() {
             let incorrect = document.querySelectorAll(".incorrect").length; 
             let total = correct + incorrect;
             let results = correct / total * 100;
-<<<<<<< Updated upstream
-            let accuracy = "Accuracy: " = results.toFixed() + "%";
+            let accuracy = "Accuracy: " + results.toFixed() + "%";
             let wpmresults = total / 5 - incorrect / seconds;
             let wpm = "WPM: " + wpmresults;
             
-
-            alert(accuracy + wpm);
-=======
-            let accuracy = "Accuracy: " + results.toFixed() + "%";
-            let wpmresults = total / 5 - incorrect / seconds;
-            let wpm = "WPM: " + wpmresults.toFixed();
-            let testCountdown = document.getElementById("countdown").innerHTML;
-            let WORDS_DIV = document.getElementById("words-div");
-            
-            if(testCountdown === "0") {
-               alert(wpm + " " + accuracy);
-            }
->>>>>>> Stashed changes
+            alert(wpm + " " + accuracy);
         }
     }, 1000);
     countdown = true;
