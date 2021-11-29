@@ -38,12 +38,24 @@ function testTimer() {
             let incorrect = document.querySelectorAll(".incorrect").length; 
             let total = correct + incorrect;
             let results = correct / total * 100;
+<<<<<<< Updated upstream
             let accuracy = "Accuracy: " = results.toFixed() + "%";
             let wpmresults = total / 5 - incorrect / seconds;
             let wpm = "WPM: " + wpmresults;
             
 
             alert(accuracy + wpm);
+=======
+            let accuracy = "Accuracy: " + results.toFixed() + "%";
+            let wpmresults = total / 5 - incorrect / seconds;
+            let wpm = "WPM: " + wpmresults.toFixed();
+            let testCountdown = document.getElementById("countdown").innerHTML;
+            let WORDS_DIV = document.getElementById("words-div");
+            
+            if(testCountdown === "0") {
+               alert(wpm + " " + accuracy);
+            }
+>>>>>>> Stashed changes
         }
     }, 1000);
     countdown = true;
@@ -52,6 +64,21 @@ function testTimer() {
 function startCountdown() {
     if (!countdown) testTimer();
 }
+
+// function stats() {
+//     let correct = document.querySelectorAll(".correct").length;
+//     let incorrect = document.querySelectorAll(".incorrect").length; 
+//     let total = correct + incorrect;
+//     let results = correct / total * 100;
+//     let accuracy = "Accuracy: " + results.toFixed() + "%";
+//     let wpmresults = total / 5 - incorrect / seconds;
+//     let wpm = "WPM: " + wpmresults.toFixed();
+//     let testSeconds = document.getElementById("countdown").innerHTML;
+    
+//     if(testSeconds === "0") {
+//         alert(accuracy + " " + wpm);
+//     }
+// }
 
 //event listeners
 document.addEventListener("keypress", function(e) {
