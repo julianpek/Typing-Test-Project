@@ -14,17 +14,36 @@
     </head>
 
     <body onload="words()" id="styling">
-        <div class="grid-container">
-            <div id="countdown-container">
-                <p id="countdown"></p>
-            </div>
-            <div id="words-div"></div>
-            <div id="btn-container">
-                <button id="refresh-btn" onclick="refresh()">
-                    <i class="fas fa-sync-alt fa-3x"></i>
-                </button>
+<!-- Primary page container for typing test -->
+        <div id="contents-container">
+            <div id="contents-div">
+                <div id="countdown-div">
+                    <p id="countdown"></p>
+                </div>
+                <div id="words-div"></div>
+                <div id="btn-div">
+                    <button class="refresh-btn" onclick="refresh()">
+                        <i class="fas fa-sync-alt fa-2x"></i>
+                    </button>
+                </div>
             </div>
         </div>
+<!-- Stats container which is displayed once the typing test is completed -->
+        <!-- <div id="stats-container">
+            <div id="stats-div">
+                <div id="wpm-div">
+                    <p>WPM: Test</p>
+                </div>
+                <div id="accuracy-div"></div>
+                    <p>Accuracy: Test</p>
+                <div id="btn-div">
+                    <button class="refresh-btn" onclick="refresh()">
+                        <i class="fas fa-sync-alt fa-2x"></i>
+                    </button>
+                </div>
+            </div>
+        </div> -->
+
     </body>
 
 </html> 
