@@ -74,7 +74,7 @@ function startCountdown() {
 }
 
 //event listeners
-document.addEventListener("keypress", function(e) {
+document.addEventListener("keydown", function(e) {
     const WORDS_DIV = document.getElementById("words-div");
     const WORDS_ARRAY = WORDS_DIV.children;
 
@@ -82,15 +82,19 @@ document.addEventListener("keypress", function(e) {
         WORDS_ARRAY[current_position].className = "correct";
         current_position++;
         WORDS_ARRAY[current_position].className = "cursor";
+        console.log("1st");
     } else if (e.key === "Backspace" || e.key === "Delete") { 
         WORDS_ARRAY[current_position].className = "";
         current_position--;
         WORDS_ARRAY[current_position].className = "cursor";
+    } else if (e.key === "Shift") {
+        current_position = current_position;
 //Ask Dale how to stop decrementation beyond index 0
     } else {
         WORDS_ARRAY[current_position].className = "incorrect";
         current_position++;
         WORDS_ARRAY[current_position].className = "cursor";
+        console.log("3rd");
     }
 });
 
