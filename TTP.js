@@ -3,7 +3,7 @@ const TEST_WORDS = ["apples", "the", "or", "welcome", "Canada", "zebra", "wave",
 const TEST_WORDS_SHUFFLED = TEST_WORDS.sort((a, b) => 0.5 - Math.random());
 let countdown = false;
 let current_position = 0;
-let seconds = 10;
+let seconds = 30;
 
 // populates words and places each individual character into a span
 function words() {
@@ -27,8 +27,9 @@ function stats() {
     let total = correct + incorrect;
     let accuracyResults = correct / total * 100;
     let accuracy = "Accuracy: " + accuracyResults.toFixed() + "%";
-    let wpmResults = total / 5 - incorrect / seconds;
-    let wpm = "WPM: " + wpmResults.toFixed();
+    let grossWpmResults = (total / 5) - incorrect;
+    let netWpmResults = grossWpmResults / 0.50;
+    let wpm = "WPM: " + netWpmResults.toFixed();
     let wpmEl = document.getElementById("wpm");
     let accuracyEl = document.getElementById("accuracy");
     let timer = document.getElementById("countdown");
@@ -53,16 +54,18 @@ function refresh() {
 
 // timer and stats for type test
 function testTimer() {
-    setInterval(function() {
-        seconds--;
+    let time = seconds;
+    let testTimer = setInterval(function() {
+            time--;
 
-        if(seconds >= 0) {
-            id = document.getElementById("countdown");
-            id.innerHTML = `${seconds}`;
-        } else {
-            stats();
-        }
-    }, 1000);
+            if(time >= 0) {
+                id = document.getElementById("countdown");
+                id.innerHTML = `${time}`;
+            } else {
+                stats();
+                clearInterval(testTimer);
+            }
+        }, 1000);
     countdown = true;
 }    
 
@@ -79,6 +82,11 @@ document.addEventListener("keypress", function(e) {
         WORDS_ARRAY[current_position].className = "correct";
         current_position++;
         WORDS_ARRAY[current_position].className = "cursor";
+    } else if (e.key === "Backspace" || e.key === "Delete") { 
+        WORDS_ARRAY[current_position].className = "";
+        current_position--;
+        WORDS_ARRAY[current_position].className = "cursor";
+//Ask Dale how to stop decrementation beyond index 0
     } else {
         WORDS_ARRAY[current_position].className = "incorrect";
         current_position++;
