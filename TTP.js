@@ -28,15 +28,15 @@ function stats() {
     let correct = document.querySelectorAll(".correct").length;
     let incorrect = document.querySelectorAll(".incorrect").length; 
     let total = correct + incorrect;
+    let cursorIndex = currentPosition;
     let time = .50; // 30 seconds (half of a minute)
-    // let average = 4.7; //average letters per word. [69 words total. 399 total characters. 69 total spaces. 399 - 69 = 329. 329 / 69 = 4.7.]
-    // let wpmResult = cursorIndex - incorrect / average / time;
-    // let wpm = "WPM: " + wpmResult.toFixed();
+    let average = 4.8; //average letters per word. [69 words total. 399 total characters. 69 total spaces. 399 - 69 = 328. 328 / 69 = 4.8.]
+    let lettersTyped = cursorIndex - incorrect - spaceCount;
+    let lettersDivided = lettersTyped / average;
+    let wpmResult = lettersDivided / time;
+    let wpm = "WPM: " + wpmResult.toFixed();
     let accuracyResults = correct / total * 100;
     let accuracy = "Accuracy: " + accuracyResults.toFixed() + "%";
-    let grossWpmResults = (total / 5) - incorrect;
-    let netWpmResults = grossWpmResults / 0.50;
-    let wpm = "WPM: " + netWpmResults.toFixed();
     let wpmEl = document.getElementById("wpm");
     let accuracyEl = document.getElementById("accuracy");
     let timer = document.getElementById("countdown");
@@ -89,7 +89,6 @@ document.addEventListener("keydown", function(e) {
         WORDS_ARRAY[currentPosition].className = "correct";
         if (e.key === ' ' && WORDS_ARRAY[currentPosition].innerHTML === ' ') {
             spaceCount++;
-            console.log(spaceCount);
         }
         currentPosition++;
         WORDS_ARRAY[currentPosition].className = "cursor";
@@ -98,11 +97,12 @@ document.addEventListener("keydown", function(e) {
     } else if (e.key === "Backspace" && currentPosition === 0) {
         currentPosition = currentPositionDefaultValue;
     } else if (e.key === "Backspace" || e.key === "Delete") { 
+        if (WORDS_ARRAY[currentPosition].innerHTML === " ") {
+            spaceCount--;
+        }
         WORDS_ARRAY[currentPosition].className = "";
         currentPosition--;
         WORDS_ARRAY[currentPosition].className = "cursor";
-    // } else if (e.key === " ") {
-    //     spaceCount++;
     } else {
         WORDS_ARRAY[currentPosition].className = "incorrect";
         currentPosition++;
