@@ -87,6 +87,10 @@ document.addEventListener("keydown", function(e) {
 
     if(e.key === WORDS_ARRAY[currentPosition].innerHTML) {
         WORDS_ARRAY[currentPosition].className = "correct";
+        if (e.key === ' ' && WORDS_ARRAY[currentPosition].innerHTML === ' ') {
+            spaceCount++;
+            console.log(spaceCount);
+        }
         currentPosition++;
         WORDS_ARRAY[currentPosition].className = "cursor";
     } else if (e.key === "Shift") {
@@ -103,18 +107,6 @@ document.addEventListener("keydown", function(e) {
         WORDS_ARRAY[currentPosition].className = "incorrect";
         currentPosition++;
         WORDS_ARRAY[currentPosition].className = "cursor";
-    }
-});
-
-document.addEventListener("keydown", function(e) {
-    const WORDS_DIV = document.getElementById("words-div");
-    const WORDS_ARRAY = WORDS_DIV.children;
-    let currentKey = WORDS_ARRAY[currentPosition].innerHTML;
-    let space = " ";
-
-    if (e.key === space && currentKey === space) {
-        console.log(currentKey);
-        spaceCount++;
     }
 });
 
