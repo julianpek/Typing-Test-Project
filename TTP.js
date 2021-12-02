@@ -2,8 +2,11 @@ const TEST_WORDS = ["apples", "the", "or", "welcome", "Canada", "zebra", "wave",
 // shuffles array of words
 const TEST_WORDS_SHUFFLED = TEST_WORDS.sort((a, b) => 0.5 - Math.random());
 let countdown = false;
-let current_position = 0;
-let seconds = 30;
+let currentPosition = `${0}`;
+let currentPositionDefaultValue = 0;
+let spaceCount = `${0}`;
+let seconds = 3;
+
 
 // populates words and places each individual character into a span
 function words() {
@@ -17,7 +20,7 @@ function words() {
     }
 
     div.appendChild(span);
-    div.firstElementChild.id = "cursor";
+    div.firstElementChild.className = "cursor";
 }
 
 //calculates stats, hides content-container, and displays stats-container once timer expires
@@ -25,6 +28,10 @@ function stats() {
     let correct = document.querySelectorAll(".correct").length;
     let incorrect = document.querySelectorAll(".incorrect").length; 
     let total = correct + incorrect;
+    let time = .50; // 30 seconds (half of a minute)
+    // let average = 4.7; //average letters per word. [70 words total. 399 total characters. 70 total spaces. 399 - 70 = 329. 329 / 70 = 4.7.]
+    // let wpmResult = cursorIndex - incorrect / average / time;
+    // let wpm = "WPM: " + wpmResult.toFixed();
     let accuracyResults = correct / total * 100;
     let accuracy = "Accuracy: " + accuracyResults.toFixed() + "%";
     let grossWpmResults = (total / 5) - incorrect;
@@ -44,7 +51,7 @@ function stats() {
 
         wordsCon.style.visibility = "hidden";
         statsCon.style.visibility = "visible";
-    }
+    };
 }
 
 // refresh page
@@ -78,24 +85,36 @@ document.addEventListener("keydown", function(e) {
     const WORDS_DIV = document.getElementById("words-div");
     const WORDS_ARRAY = WORDS_DIV.children;
 
-    if(e.key === WORDS_ARRAY[current_position].innerHTML) {
-        WORDS_ARRAY[current_position].className = "correct";
-        current_position++;
-        WORDS_ARRAY[current_position].className = "cursor";
-        console.log("1st");
-    } else if (e.key === "Backspace" || e.key === "Delete") { 
-        WORDS_ARRAY[current_position].className = "";
-        current_position--;
-        WORDS_ARRAY[current_position].className = "cursor";
+    if(e.key === WORDS_ARRAY[currentPosition].innerHTML) {
+        WORDS_ARRAY[currentPosition].className = "correct";
+        currentPosition++;
+        WORDS_ARRAY[currentPosition].className = "cursor";
     } else if (e.key === "Shift") {
-        current_position = current_position;
-//Ask Dale how to stop decrementation beyond index 0
+        currentPosition = currentPosition;
+    } else if (e.key === "Backspace" && currentPosition === 0) {
+        currentPosition = currentPositionDefaultValue;
+    } else if (e.key === "Backspace" || e.key === "Delete") { 
+        WORDS_ARRAY[currentPosition].className = "";
+        currentPosition--;
+        WORDS_ARRAY[currentPosition].className = "cursor";
+    // } else if (e.key === " ") {
+    //     spaceCount++;
     } else {
-        WORDS_ARRAY[current_position].className = "incorrect";
-        current_position++;
-        WORDS_ARRAY[current_position].className = "cursor";
-        console.log("3rd");
+        WORDS_ARRAY[currentPosition].className = "incorrect";
+        currentPosition++;
+        WORDS_ARRAY[currentPosition].className = "cursor";
     }
 });
+
+// document.addEventListener("keydown", function(e) {
+//     const WORDS_DIV = document.getElementById("words-div");
+//     const WORDS_ARRAY = WORDS_DIV.children;
+//     let currentKey = WORDS_ARRAY[currentPosition].innerHTML;
+//     let space = ' ';
+
+//     if (e.key === currentKey && currentKey === space) {
+//         spaceCount++;
+//     }
+// });
 
 document.onkeydown = startCountdown;
