@@ -5,7 +5,7 @@ let countdown = false;
 let currentPosition = `${0}`;
 let currentPositionDefaultValue = 0;
 let spaceCount = `${0}`;
-let seconds = 3;
+let seconds = 30;
 
 
 // populates words and places each individual character into a span
@@ -29,7 +29,7 @@ function stats() {
     let incorrect = document.querySelectorAll(".incorrect").length; 
     let total = correct + incorrect;
     let time = .50; // 30 seconds (half of a minute)
-    // let average = 4.7; //average letters per word. [70 words total. 399 total characters. 70 total spaces. 399 - 70 = 329. 329 / 70 = 4.7.]
+    // let average = 4.7; //average letters per word. [69 words total. 399 total characters. 69 total spaces. 399 - 69 = 329. 329 / 69 = 4.7.]
     // let wpmResult = cursorIndex - incorrect / average / time;
     // let wpm = "WPM: " + wpmResult.toFixed();
     let accuracyResults = correct / total * 100;
@@ -106,15 +106,16 @@ document.addEventListener("keydown", function(e) {
     }
 });
 
-// document.addEventListener("keydown", function(e) {
-//     const WORDS_DIV = document.getElementById("words-div");
-//     const WORDS_ARRAY = WORDS_DIV.children;
-//     let currentKey = WORDS_ARRAY[currentPosition].innerHTML;
-//     let space = ' ';
+document.addEventListener("keydown", function(e) {
+    const WORDS_DIV = document.getElementById("words-div");
+    const WORDS_ARRAY = WORDS_DIV.children;
+    let currentKey = WORDS_ARRAY[currentPosition].innerHTML;
+    let space = " ";
 
-//     if (e.key === currentKey && currentKey === space) {
-//         spaceCount++;
-//     }
-// });
+    if (e.key === space && currentKey === space) {
+        console.log(currentKey);
+        spaceCount++;
+    }
+});
 
 document.onkeydown = startCountdown;
